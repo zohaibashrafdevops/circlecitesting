@@ -5,7 +5,6 @@ jobs:
         equals ['true', $STOP_DEPLOY]
     docker:
       - image: cimg/base:stable
-   
     steps:
       - checkout
       - run:
