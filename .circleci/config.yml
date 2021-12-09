@@ -3,9 +3,10 @@ jobs:
   cloud-dev:
     docker:
       - image: cimg/base:stable
-  - when:
-      equals ['true', $STOP_DEPLOY]
+      
     steps:
+      - when:
+          equals ['true', $STOP_DEPLOY]
       - checkout
       - run:
           name: "Say hello"
