@@ -14,7 +14,7 @@ jobs:
       - run:
           name: "Say hello"
           command: "echo Hello, this is dev"
-  jobs:
+jobs:
   cloud-stagging:
     docker:
       - image: cimg/base:stable
@@ -24,7 +24,7 @@ jobs:
       - run:
           name: "hello engineers"
           command: "echo this is stagging"
-  jobs:
+jobs:
   clouds-production:
     docker:
       - image: cimg/base:stable
@@ -40,7 +40,7 @@ jobs:
 
 workflows:
   version: 2
-  build-test-and-deploy:
+  build-test-workflows:
     jobs:
       - cloud-dev
       - cloud-stagging:
@@ -49,8 +49,9 @@ workflows:
           filters:
             branches:
               only:
-                - test
-      - cloud-production:
+                - test   
+  build-production-workflows:
+     - cloud-production:
           requires:
             - cloud-dev
           filters:
