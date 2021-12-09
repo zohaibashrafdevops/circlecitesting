@@ -1,4 +1,4 @@
-version: 2
+version: 2.1
 jobs:
   cloud-dev:
     docker:
@@ -27,7 +27,7 @@ jobs:
           name: "Say hello"
           command: "echo Running deployment on ECS"
 workflows:
-  version: 2
+  version: 2.1
   build-dev-workflows:
     jobs:
       - cloud-dev:
