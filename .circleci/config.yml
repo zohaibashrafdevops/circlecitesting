@@ -36,6 +36,7 @@ workflows:
       - Deployment:
           filters:
             branches:
+              ignore:
               only: test
   build-production-workflows:
     jobs:
