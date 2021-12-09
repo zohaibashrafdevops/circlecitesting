@@ -5,6 +5,7 @@ jobs:
       - image: cimg/base:stable  
     steps:
       - when:
+          echo $STOP_DEPLOY
           equals ['true', $STOP_DEPLOY]
       - checkout
       - run:
