@@ -1,11 +1,10 @@
-version: 2.1
+version: 2
 jobs:
   cloud-dev:
     docker:
       - image: cimg/base:stable  
     steps:
       - when:
-          echo $STOP_DEPLOY
           equals ['true', $STOP_DEPLOY]
       - checkout
       - run:
@@ -28,7 +27,7 @@ jobs:
           name: "Say hello"
           command: "echo Running deployment on ECS"
 workflows:
-  version: 2.1
+  version: 2
   build-dev-workflows:
     jobs:
       - cloud-dev:
