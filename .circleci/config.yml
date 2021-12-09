@@ -35,11 +35,12 @@ workflows:
           filters:
             branches:
               only:
-                - test 
+                - test
+    build-production-workflows:
+      jobs:
       - cloud-production:
           requires:
-            - cloud-dev 
-            - cloud-stagging
+            - build-test-workflows
           filters:
             branches:
                 - master
