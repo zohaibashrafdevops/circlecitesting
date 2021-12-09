@@ -29,7 +29,6 @@ jobs:
           name: "hello engineers"
           command: "echo this is productoin"
 workflows:
-  version: 2
   build-test-workflows:
     jobs:
       - cloud-dev
@@ -40,7 +39,6 @@ workflows:
             branches:
               only:
                 - test
-  workflows:
   build-production-workflows:
     jobs:
  - cloud-production:
