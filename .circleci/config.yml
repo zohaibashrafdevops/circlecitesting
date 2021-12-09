@@ -3,6 +3,8 @@ jobs:
   cloud-dev:
     docker:
       - image: cimg/base:stable
+  - when:
+        !Equals ['true', $STOP_DEPLOY]
     steps:
       - checkout
       - run:
@@ -29,14 +31,13 @@ workflows:
   build-dev-workflows:
     jobs:
       - cloud-dev:
+          context: dev
           filters:
             branches:
-              ignore:
               only: test
       - Deployment:
           filters:
             branches:
-              ignore:
               only: test
   build-production-workflows:
     jobs:
