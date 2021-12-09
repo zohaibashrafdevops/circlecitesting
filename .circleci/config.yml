@@ -1,26 +1,22 @@
-version: 2.1
+version: 2
 jobs:
   cloud-dev:
     docker:
       - image: cimg/base:stable
-  
     steps:
       - checkout
       - run:
           name: "Say hello"
           command: "echo Hello, this is dev"
-jobs:
   cloud-stagging:
     docker:
       - image: cimg/base:stable
-   
     steps:
       - checkout
       - run:
           name: "hello engineers"
           command: "echo this is stagging"
-jobs:
-  clouds-production:
+  cloud-production:
     docker:
       - image: cimg/base:stable
     steps:
@@ -29,6 +25,7 @@ jobs:
           name: "hello engineers"
           command: "echo this is productoin"
 workflows:
+  version: 2
   build-test-workflows:
     jobs:
       - cloud-dev
@@ -38,14 +35,11 @@ workflows:
           filters:
             branches:
               only:
-                - test
-  build-production-workflows:
-    jobs:
- - cloud-production:
+                - test 
+      - cloud-production:
           requires:
-            - cloud-dev
+            - cloud-dev 
             - cloud-stagging
           filters:
             branches:
-              only:
                 - master
