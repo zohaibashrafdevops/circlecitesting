@@ -23,11 +23,10 @@ workflows:
       - cloud-dev:
           filters:
             branches:
-              only:
-                - test
+              only: test
     build-production-workflows:
       jobs:
       - cloud-production:
           filters:
             branches:
-                - master
+              only: master
