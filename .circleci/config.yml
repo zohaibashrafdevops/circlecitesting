@@ -1,10 +1,11 @@
 version: 2
 jobs:
   cloud-dev:
+    - when:
+        equals ['true', $STOP_DEPLOY]
     docker:
       - image: cimg/base:stable
-  - when:
-        !Equals ['true', $STOP_DEPLOY]
+   
     steps:
       - checkout
       - run:
