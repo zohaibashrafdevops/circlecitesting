@@ -7,7 +7,7 @@ jobs:
     environment:
       HUGO_BUILD_DIR: ~/hugo
     steps:
-      - run: sudo apk update && apk add git
+      - run:  git
       # checkout the repository
       - checkout
 
