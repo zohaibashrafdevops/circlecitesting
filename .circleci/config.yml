@@ -8,7 +8,7 @@ jobs:
       - run:
           name: "Say hello world"
           command: |
-            echo $stop_deploy, hello dev
+            echo $stop_deploy, hello dev this v2
   cloud-production:
     docker:
       - image: cimg/base:stable
@@ -24,7 +24,7 @@ jobs:
       - checkout
       - run:
           name: "Say hello"
-          command: "echo Running deployment on ECS test some commit are v1"
+          command: "echo Running deployment on ECS test some commit are v2"
 workflows:
   version: 2
   build-dev-workflows:
