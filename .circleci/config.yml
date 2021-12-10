@@ -4,7 +4,7 @@ jobs:
     parameters:
         my_parameters:
            type: string
-           default: ""
+           default: "true"
     docker:
       - image: cimg/base:stable
     steps:
