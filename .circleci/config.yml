@@ -5,6 +5,7 @@ jobs:
       preinstall-foo:
         type: boolean
         default: true
+      machine: true
     docker:
       - image: cimg/base:stable
     steps:
