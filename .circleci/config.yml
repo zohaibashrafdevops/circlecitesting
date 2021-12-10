@@ -3,7 +3,7 @@ jobs:
   build:
     docker:
       - image: alpine:latest
-    working_directory: /
+    working_directory: /hugo
     environment:
       HUGO_BUILD_DIR: /hugo
     steps:
