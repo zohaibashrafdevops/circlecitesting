@@ -5,7 +5,7 @@ jobs:
       - image: cimg/base:stable  
     steps:
       - when:
-          equals [true, $STOP_DEPLOY]
+          equals: ['true', $STOP_DEPLOY]
       - checkout
       - run:
           name: "Say hello world"
