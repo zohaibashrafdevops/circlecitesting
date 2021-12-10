@@ -10,7 +10,7 @@ jobs:
     steps:
       - when:
           condition:
-            equal: [<< parameter.my_parameters >>, true]
+            equal: [<< parameters.my_parameters >>, true]
           steps:
               - checkout
               - run:
