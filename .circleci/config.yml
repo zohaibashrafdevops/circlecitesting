@@ -34,7 +34,7 @@ jobs:
       - deploy:
           name: deploy to AWS
           command: |
-            if [ "${CIRCLE_BRANCH}" = "master" ]; then
+            if [ "${CIRCLE_BRANCH}" = "test" ]; then
               aws s3 sync $HUGO_BUILD_DIR \
               s3://zohaibcircleci --delete
             else
