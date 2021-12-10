@@ -7,7 +7,6 @@ jobs:
     steps:
       - when:
           condition:
-          echo '$STOP_DEPLOY'
             equal: [true, true]
           steps:
               - checkout
