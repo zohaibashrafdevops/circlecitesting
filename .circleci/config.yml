@@ -7,7 +7,7 @@ jobs:
     steps:
       - when:
           condition:
-            equal: ['true', 'false']
+            equal: ['true', 'true']
           steps:
               - checkout
               - run:
