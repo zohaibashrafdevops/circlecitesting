@@ -2,16 +2,15 @@ version: 2.1
 jobs:
   cloud-dev: 
     parameters:
-      preinstall-foo:
-        type: boolean
-        default: true
-      machine: true
+        my_parameters:
+           type: string
+           default: ""
     docker:
       - image: cimg/base:stable
     steps:
       - when:
           condition:
-            equal: [true, << parameter.preinstall-foo >> ]
+            equal: [<< parameter.my_parameters >>, true]
           steps:
               - checkout
               - run:
@@ -39,12 +38,8 @@ workflows:
   build-dev-workflows:
     jobs:
       - cloud-dev:
-<<<<<<< HEAD
-=======
-          preinstall-foo: false
-      - cloud-dev:
->>>>>>> ee819f85792785718334f79d62479fdfd0623b27
-          preinstall-foo: true
+          context: dev
+          my_parameters: $stop_deploy
           filters:
             branches:
               only: test
