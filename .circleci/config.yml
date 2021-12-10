@@ -39,7 +39,7 @@ workflows:
     jobs:
       - cloud-dev:
           context: dev
-          my_parameters: $stop_deploy
+          my_parameters: "$stop_deploy"
           filters:
             branches:
               only: test
