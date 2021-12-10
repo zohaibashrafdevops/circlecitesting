@@ -6,7 +6,8 @@ jobs:
     steps:
       - when:
           condition:
-            equal: ['true', $STOP_DEPLOY]
+            on_fail
+            # equal: ['true', $STOP_DEPLOY]
           steps:
               - checkout
               - run:
