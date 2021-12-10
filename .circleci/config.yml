@@ -2,9 +2,9 @@ version: 2.1
 jobs:
   cloud-dev: 
     parameters:
-        my_parameters:
-           type: string
-           default: "true"
+      my_parameters:
+        type: string
+        default: "true"
     docker:
       - image: cimg/base:stable
     steps:
