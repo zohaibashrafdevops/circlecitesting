@@ -2,7 +2,7 @@ version: 2.1
 parameters:
   check_stop:
     default: $STOP_DEPLOY
-    type: env_var_name
+    type: string
 jobs:
   cloud-dev:
     docker:
