@@ -2,12 +2,12 @@ version: 2
 jobs:
   build:
     docker:
-      - image: cibuilds/hugo:latest
+      - image: cimg/base:stable
     working_directory: ~./hugo
     environment:
       HUGO_BUILD_DIR: ~/hugo
     steps:
-      # - run: apk update && apk add git
+      - run: sudo apk update && apk add git
       # checkout the repository
       - checkout
 
