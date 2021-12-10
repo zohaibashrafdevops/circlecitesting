@@ -2,6 +2,7 @@ version: 2.1
 
 jobs:
   cloud-dev:
+  echo "$stop_deploy"
     docker:
       - image: cimg/base:stable
     steps:
