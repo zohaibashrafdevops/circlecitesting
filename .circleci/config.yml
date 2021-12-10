@@ -4,12 +4,6 @@ jobs:
   cloud-dev:
     docker:
       - image: cimg/base:stable
-    # parameters:
-    #   check_stop:
-    #     default: $STOP_DEPLOY
-    #     type: string
-    # environment:
-    #   check_stop: $STOP_DEPLOY
     steps:
       - when:
           condition:
@@ -19,21 +13,6 @@ jobs:
               - run:
                   name: "Say hello world"
                   command: "echo Hello, this is dev"
-        # - when:
-        #     equal: ['true', $STOP_DEPLOY]
-        #     steps:
-        #       - checkout
-        #       - run:
-        #           name: "Say hello world"
-        #           command: "echo Hello, this is dev"
-    
-    # steps:
-    #   - when:
-    #       equals: ['true', $STOP_DEPLOY]
-    #   - checkout
-    #   - run:
-    #       name: "Say hello world"
-    #       command: "echo Hello, this is dev"
   cloud-production:
     docker:
       - image: cimg/base:stable
