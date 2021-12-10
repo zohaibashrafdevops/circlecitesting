@@ -8,7 +8,7 @@ jobs:
       - run:
           name: "Say hello world"
           command: |
-            echo $stop_deploy, hello dev this v2
+            echo $stop_deploy, hi this latst commit going....
   cloud-production:
     docker:
       - image: cimg/base:stable
