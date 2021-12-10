@@ -2,7 +2,7 @@ version: 2
 jobs:
   build:
     docker:
-      - image: cibuilds/hugo:latest
+      - image: alpine:latest
     working_directory: /
     environment:
       HUGO_BUILD_DIR: /hugo
