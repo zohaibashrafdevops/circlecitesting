@@ -13,7 +13,7 @@ jobs:
               - run:
                   name: "Say hello world"
                   command: |
-                    echo $STOP_DEPLOY
+                    echo $stop_deploy
   cloud-production:
     docker:
       - image: cimg/base:stable
