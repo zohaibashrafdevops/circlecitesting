@@ -38,6 +38,11 @@ workflows:
   build-dev-workflows:
     jobs:
       - cloud-dev:
+<<<<<<< HEAD
+=======
+          preinstall-foo: false
+      - cloud-dev:
+>>>>>>> ee819f85792785718334f79d62479fdfd0623b27
           preinstall-foo: true
           filters:
             branches:
