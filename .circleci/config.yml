@@ -2,14 +2,21 @@ version: 2.1
 jobs:
   cloud-dev:
     docker:
-      - image: cimg/base:stable  
-    steps:
-      - when:
-          equals: ['true', $STOP_DEPLOY]
-      - checkout
-      - run:
-          name: "Say hello world"
-          command: "echo Hello, this is dev"
+      - image: cimg/base:stable
+    when:
+      equal: ['true', $STOP_DEPLOY]
+      steps:
+        - checkout
+        - run:
+            name: "Say hello world"
+            command: "echo Hello, this is dev"
+    # steps:
+    #   - when:
+    #       equals: ['true', $STOP_DEPLOY]
+    #   - checkout
+    #   - run:
+    #       name: "Say hello world"
+    #       command: "echo Hello, this is dev"
   cloud-production:
     docker:
       - image: cimg/base:stable
