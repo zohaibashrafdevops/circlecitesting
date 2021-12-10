@@ -3,15 +3,15 @@ jobs:
   cloud-dev:
     docker:
       - image: cimg/base:stable
-      steps:
-        - when:
-          condition:
-            equal: ['true', $STOP_DEPLOY]
-          steps:
-              - checkout
-              - run:
-                  name: "Say hello world"
-                  command: "echo Hello, this is dev"
+    steps:
+      - when:
+        condition:
+          equal: ['true', $STOP_DEPLOY]
+        steps:
+            - checkout
+            - run:
+                name: "Say hello world"
+                command: "echo Hello, this is dev"
         # - when:
         #     equal: ['true', $STOP_DEPLOY]
         #     steps:
