@@ -3,10 +3,12 @@ jobs:
   cloud-dev:
     docker:
       - image: cimg/base:stable
+    environment:
+      check_stop: $STOP_DEPLOY
     steps:
       - when:
           condition:
-            equal: [true, $STOP_DEPLOY]
+            equal: ['true', $check_stop]
           steps:
               - checkout
               - run:
