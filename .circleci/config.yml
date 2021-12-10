@@ -1,22 +1,14 @@
 version: 2.1
 jobs:
   cloud-dev: 
-    parameters:
-      my_parameters:
-        type: string
-        default: "true"
     docker:
       - image: cimg/base:stable
     steps:
-      - when:
-          condition:
-            equal: [<< parameters.my_parameters >>, true]
-          steps:
-              - checkout
-              - run:
-                  name: "Say hello world"
-                  command: |
-                    echo $stop_deploy, hello dev
+      - checkout
+      - run:
+          name: "Say hello world"
+          command: |
+            echo $stop_deploy, hello dev
   cloud-production:
     docker:
       - image: cimg/base:stable
@@ -39,7 +31,6 @@ workflows:
     jobs:
       - cloud-dev:
           context: dev
-          my_parameters: "$stop_deploy"
           filters:
             branches:
               only: test
