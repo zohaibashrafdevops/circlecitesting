@@ -1,8 +1,7 @@
 version: 2.1
 
 jobs:
-  cloud-dev:
-      - run: echo "hello" 
+  cloud-dev:  
     docker:
       - image: cimg/base:stable
     steps:
@@ -13,7 +12,8 @@ jobs:
               - checkout
               - run:
                   name: "Say hello world"
-                  command: "echo Hello, this is dev"
+                  command: |
+                    echo $STOP_DEPLOY
   cloud-production:
     docker:
       - image: cimg/base:stable
