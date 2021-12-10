@@ -39,6 +39,9 @@ workflows:
     jobs:
       - cloud-dev:
           context: dev
+          preinstall-foo: false
+      - cloud-dev:
+          preinstall-foo: true
           filters:
             branches:
               only: test
