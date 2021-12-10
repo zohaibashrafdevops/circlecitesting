@@ -1,18 +1,19 @@
 version: 2.1
-parameters:
-  check_stop:
-    default: $STOP_DEPLOY
-    type: string
+
 jobs:
   cloud-dev:
     docker:
       - image: cimg/base:stable
+    # parameters:
+    #   check_stop:
+    #     default: $STOP_DEPLOY
+    #     type: string
     # environment:
     #   check_stop: $STOP_DEPLOY
     steps:
       - when:
           condition:
-            equal: ['true', "${<< parameters.check_stop >>}"]
+            equal: ['true', 'false']
           steps:
               - checkout
               - run:
