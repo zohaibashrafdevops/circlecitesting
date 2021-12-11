@@ -20,6 +20,7 @@ jobs:
             - node_modules
       - run:
           name: Build the application
+          command: echo "build app"
   deploy-test:
     docker:
       - image: docker:17.05.0-ce-git
