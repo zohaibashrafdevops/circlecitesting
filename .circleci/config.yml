@@ -6,6 +6,20 @@ jobs:
   build:
     docker:
       - image: circleci/node:13.14.0
+    steps:
+      - checkout
+      - setup_remote_docker
+      - restore_cache:
+          key: dependency-cache-{{ checksum "package.json" }}
+      - run:
+          name: Install dependencies
+          command: npm install
+      - save_cache:
+          key: dependency-cache-{{ checksum "package.json" }}
+          paths:
+            - node_modules
+      - run:
+          name: Build the application
   deploy-test:
     docker:
       - image: docker:17.05.0-ce-git
@@ -52,5 +66,4 @@ workflows:
      - deploy-production:
         filters:
           branches:
-            only: 
-               - master
+            only: master
