@@ -8,9 +8,33 @@ jobs:
       - image: circleci/node:13.14.0
     steps:
       - checkout
+      - setup_remote_docker
+      - restore_cache:
+          key: dependency-cache-{{ checksum "package.json" }}
+      - run:
+          name: Install dependencies
+          command: npm install
+      - save_cache:
+          key: dependency-cache-{{ checksum "package.json" }}
+          paths:
+            - node_modules
+      - run:
+          name: Build the application
+          command: npm run build
+      - persist_to_workspace:
+          root: ./
+          paths:
+            - package.json
+            - node_modules
+            - src
+            - build
   deploy-test:
     docker:
       - image: docker:17.05.0-ce-git
+    steps:
+      - setup_remote_docker
+      - attach_workspace:
+          at: ./
       - run:
           #Get all pre-requisites
           command: |
@@ -40,6 +64,7 @@ workflows:
     jobs:
       - build
       - deploy-test:
+          context: AWS
           requires:
             - build
           filters:
