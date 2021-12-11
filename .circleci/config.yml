@@ -20,14 +20,6 @@ jobs:
             - node_modules
       - run:
           name: Build the application
-          command: npm run build
-      - persist_to_workspace:
-          root: ./
-          paths:
-            - package.json
-            - node_modules
-            - src
-            - build
   deploy-test:
     docker:
       - image: docker:17.05.0-ce-git
@@ -65,8 +57,6 @@ workflows:
       - build
       - deploy-test:
           context: AWS
-          requires:
-            - build
           filters:
             branches:
               only:
