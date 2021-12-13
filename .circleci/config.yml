@@ -20,6 +20,7 @@ jobs:
       - setup_remote_docker
       - run:
           #Get all pre-requisites
+          name: install package 
           command: make
             
   deploy-production:
@@ -31,6 +32,7 @@ jobs:
           at: ./
       - run:
           #Get all pre-requisites
+          name: install package 
           command: make
            
 workflows:

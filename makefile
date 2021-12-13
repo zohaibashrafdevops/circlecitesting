@@ -1,3 +1,5 @@
+all:
+echo "run all packages"
 apk add --no-cache \
 py-pip=9.0.0-r1
 pip install --upgrade pip \
