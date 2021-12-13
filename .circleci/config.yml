@@ -11,7 +11,7 @@ jobs:
       - setup_remote_docker
       - run:
           name: Build the application
-          command: echo "build app"
+          command: sudo apt intall make 
   deploy-test:
     docker:
       - image: docker:17.05.0-ce-git
