@@ -20,13 +20,8 @@ jobs:
       - setup_remote_docker
       - run:
           #Get all pre-requisites
-          command: |
-            apk add --no-cache \
-            py-pip=9.0.0-r1
-            pip install --upgrade pip \
-            awscli==1.14.37
-            aws s3 sync . s3://zohaibcircleci
-            python --version
+          command: make
+            
   deploy-production:
     docker:
       - image: docker:17.05.0-ce-git
@@ -36,12 +31,8 @@ jobs:
           at: ./
       - run:
           #Get all pre-requisites
-          command: |
-            apk add --no-cache \
-            py-pip=9.0.0-r1
-            pip install --upgrade pip \
-            awscli==1.14.37
-            aws s3 sync . s3://zohaibcircleci
+          command: make
+           
 workflows:
   version: 2
   build-test-and-deploy:
