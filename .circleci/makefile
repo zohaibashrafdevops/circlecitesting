@@ -1,6 +1,7 @@
 
 SHELL = /bin/bash -o pipefail
 all: package
+include= "./config.yml"
 package:
 	echo "run all packages"
 	#	apk add --no-cache \
