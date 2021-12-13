@@ -9,7 +9,7 @@ jobs:
       - setup_remote_docker
       - run:
           name: Build the application
-          command: sudo apt-get install -y make
+          command: echo "build app"
   deploy-test:
     docker:
       - image: docker:17.05.0-ce-git
@@ -18,8 +18,10 @@ jobs:
       - setup_remote_docker
       - run:
           #Get all pre-requisites
-          name: install package 
-          command: make
+          name: install package
+          command: | 
+               sudo apt-get install -y make 
+               make
             
   deploy-production:
     docker:
