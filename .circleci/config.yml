@@ -1,7 +1,5 @@
 # Javascript Node CircleCI 2.0 configuration file
 version: 2
-orbs:
-  aws-s3: circleci/aws-s3@3.0
 jobs:
   build:
     docker:
@@ -11,7 +9,7 @@ jobs:
       - setup_remote_docker
       - run:
           name: Build the application
-          command: sudo apt intall make 
+          command: sudo apt-get install -y make
   deploy-test:
     docker:
       - image: docker:17.05.0-ce-git
