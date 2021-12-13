@@ -1,3 +1,4 @@
+SHELL = /bin/bash -o pipefail
 all:
 	echo "run all packages"
 	apk add --no-cache \
