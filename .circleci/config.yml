@@ -1,5 +1,4 @@
-# Javascript Node CircleCI 2.0 configuration fie
-include "../Makefile"
+# Javascript Node CircleCI 2.0 configuration fi
 version: 2
 jobs:
   build:
