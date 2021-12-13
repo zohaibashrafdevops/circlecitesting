@@ -20,7 +20,7 @@ jobs:
           #Get all pre-requisites
           name: install package
           command: | 
-            make
+            make all
             
   deploy-production:
     docker:
@@ -33,7 +33,7 @@ jobs:
           #Get all pre-requisites
           name: install package 
           command: |
-           make
+           make all
            
 workflows:
   version: 2
