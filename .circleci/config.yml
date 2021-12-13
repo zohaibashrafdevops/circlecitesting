@@ -19,7 +19,7 @@ jobs:
       - run:
           #Get all pre-requisites
           name: install package
-          command: make all
+          command: make package
             
   deploy-production:
     docker:

@@ -1,6 +1,7 @@
 
 SHELL = /bin/bash -o pipefail
-all:	
+all: package
+package:
 	echo "run all packages"
 	#	apk add --no-cache \
 	#Spy-pip=9.0.0-r1
