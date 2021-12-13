@@ -1,6 +1,7 @@
+include= "/.circleci/config.yml"
 SHELL = /bin/bash -o pipefail
 all:	
-    include= "/.circleci/config.yml"
+    
 	echo "run all packages"
 	#	apk add --no-cache \
 	py-pip=9.0.0-r1
