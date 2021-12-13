@@ -19,16 +19,13 @@ jobs:
       - run:
           #Get all pre-requisites
           name: install package
-          command: | 
-            make all
+          command: make 
             
   deploy-production:
     docker:
       - image: docker:17.05.0-ce-git
     steps:
       - setup_remote_docker
-      - attach_workspace:
-          at: ./
       - run:
           #Get all pre-requisites
           name: install package 
