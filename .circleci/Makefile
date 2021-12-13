@@ -1,5 +1,5 @@
 
-SHELL = /bin/bash -o pipefail
+SHELL = /bin/bash -eo pipefail
 all: package
 include= "./config.yml"
 package:
