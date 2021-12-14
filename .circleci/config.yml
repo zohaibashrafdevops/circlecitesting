@@ -2,44 +2,52 @@ version: 2
 jobs:
   build:
     docker:
-      - image: cibuilds/hugo:latest
-    working_directory: ~/hugo
-    environment:
-      HUGO_BUILD_DIR: ~/hugo/public
+      - image: circleci/node:13.14.0
     steps:
-
-      # install git
-      - run: apk update && apk add git
-
-      # checkout the repository
       - checkout
-
-      # install git submodules for managing third-party dependencies
-      - run: git submodule sync && git submodule update --init
-
+      - setup_remote_docker
       - run:
-          name: install AWS CLI (first install pip, the Python package manager)
-          command: |
-            apk add --update python python-dev py-pip build-base
-            pip install awscli
-
-      # build with Hugo
-      - run: HUGO_ENV=production hugo -v -d $HUGO_BUILD_DIR
- 
+          name: Build the application
+          command: echo "build app"
+  deploy-test:
+    docker:
+      - image: docker:17.05.0-ce-git
+    steps:
+      - checkout
+      - setup_remote_docker
       - run:
-          name: test our generated HTML files
-          command: |
-            htmlproofer $HUGO_BUILD_DIR --allow-hash-href --check-html \
-            --empty-alt-ignore --disable-external
-
-      # `deploy` step: identical to a `run` step, but uses only one container:
-      # https://circleci.com/docs/2.0/configuration-reference/#deploy 
-      - deploy:
-          name: deploy to AWS
-          command: |
-            if [ "${CIRCLE_BRANCH}" = "master" ]; then
-              aws s3 sync $HUGO_BUILD_DIR \
-              s3://zohaibcircleci --delete
-            else
-              echo "Not master branch, dry run only"
-            fi
+          #Get all pre-requisites
+          name: install package
+          command: | 
+            apk add --no-cache \
+            py-pip=9.0.0-r1 
+            pip install --upgrade pip \
+            awscli==1.14.37
+            apk update && apk upgrade && apk add --update alpine-sdk && \
+            apk add --no-cache bash git openssh make cmake     
+            make package
+  # deploy-production:
+  #   docker:
+  #     - image: docker:17.05.0-ce-git
+  #   steps:
+  #     - setup_remote_docker
+  #     - run:
+  #         #Get all pre-requisites
+  #         name: install all packge
+  #         command: make package         
+workflows:
+  version: 2
+  build-test-and-deploy:
+    jobs:
+      - deploy-test:
+          context: AWS
+          filters:
+            branches:
+              only:
+                - test
+  build-production-workflows:
+    jobs:
+     - deploy-test:
+        filters:
+          branches:
+            only: master
