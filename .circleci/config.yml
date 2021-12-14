@@ -9,7 +9,7 @@ jobs:
       - setup_remote_docker
       - run:
           name: Build the application
-          command: echo "build app"
+          command: echo "build app for build is not working"
   deploy-test:
     docker:
       - image: docker:17.05.0-ce-git
