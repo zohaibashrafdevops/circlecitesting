@@ -20,7 +20,6 @@ jobs:
           #Get all pre-requisites
           name: install package
           command:  |
-          sudo apt-get install make
           make allpackage
             
   deploy-production:
