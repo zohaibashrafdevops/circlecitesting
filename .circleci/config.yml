@@ -8,8 +8,8 @@ jobs:
       - setup_remote_docker
       - run:
           name: Build the application
-          command: echo "build app"
-  deploy-test:
+          command: echo "build app for build is not working"
+  app-deploy:
     docker:
       - image: docker:17.05.0-ce-git
     steps:
@@ -37,9 +37,9 @@ jobs:
   #         command: make package         
 workflows:
   version: 2
-  build-test-and-deploy:
+  build-test-workflows:
     jobs:
-      - deploy-test:
+      - app-deploy:
           context: AWS
           filters:
             branches:
@@ -47,7 +47,9 @@ workflows:
                 - test
   build-production-workflows:
     jobs:
-     - deploy-test:
+     - app-deploy:
         filters:
           branches:
-            only: master
+            only:
+              - master
+
