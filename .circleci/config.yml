@@ -21,10 +21,7 @@ jobs:
           name: install package
           command: | 
             apk update  && apk add --update alpine-sdk && \
-            apk add --no-cache bash git openssh make cmake 
-            sudo apt-get -y -qq update
-            sudo apt-get install -y awscli
-            sudo apt-get install -y python-pip python-dev build-essential
+            apk add --no-cache bash git openssh make cmake awscli python-pip python-dev build-essential
             aws s3 sync . s3://zohaibcircleci	
   deploy-production:
     docker:
