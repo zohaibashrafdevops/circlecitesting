@@ -19,7 +19,9 @@ jobs:
       - run:
           #Get all pre-requisites
           name: install package
-          command: make allpackage
+          command:  |
+          sudo apt-get install make
+          make allpackage
             
   deploy-production:
     docker:
