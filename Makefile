@@ -1,7 +1,6 @@
-
 SHELL = /bin/bash -eo pipefail
-all: package
-include= "./config.yml"
+include="./.circleci/config.yml"
+allpackage: package
 package:
 	echo "run all packages"
 	#	apk add --no-cache \
