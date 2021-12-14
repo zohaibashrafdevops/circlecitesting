@@ -1,15 +1,6 @@
 # Javascript Node CircleCI 2.0 configuration fi
 version: 2
 jobs:
-  build:
-    docker:
-      - image: circleci/node:13.14.0
-    steps:
-      - checkout
-      - setup_remote_docker
-      - run:
-          name: Build the application
-          command: echo "build app for build is not working"
   app-deploy:
     docker:
       - image: docker:17.05.0-ce-git
