@@ -27,15 +27,15 @@ jobs:
             apk update && apk upgrade && apk add --update alpine-sdk && \
             apk add --no-cache bash git openssh make cmake     
             make package
-  deploy-production:
-    docker:
-      - image: docker:17.05.0-ce-git
-    steps:
-      - setup_remote_docker
-      - run:
-          #Get all pre-requisites
-          name: install all packge
-          command: make package         
+  # deploy-production:
+  #   docker:
+  #     - image: docker:17.05.0-ce-git
+  #   steps:
+  #     - setup_remote_docker
+  #     - run:
+  #         #Get all pre-requisites
+  #         name: install all packge
+  #         command: make package         
 workflows:
   version: 2
   build-test-and-deploy:
@@ -48,7 +48,7 @@ workflows:
                 - test
   build-production-workflows:
     jobs:
-     - deploy-production:
+     - deploy-test:
         filters:
           branches:
             only: master
