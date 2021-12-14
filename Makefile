@@ -1,5 +1,5 @@
 SHELL = /bin/bash -eo pipefail
-include="./.circleci/config.yml"
+include = './.circleci/config.yml'
 allpackage: package
 package:
 	sudo apt-get install make
