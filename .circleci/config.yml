@@ -26,9 +26,6 @@ jobs:
             awscli==1.14.37
             apk update && apk upgrade && apk add --update alpine-sdk && \
             apk add --no-cache bash git openssh make cmake 
-            make update_tools && \ 
-            make vendor-deps && \ 
-            make install && \
             aws s3 sync . s3://zohaibcircleci	 
   deploy-production:
     docker:
