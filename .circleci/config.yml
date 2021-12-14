@@ -38,8 +38,8 @@ workflows:
                 - test
   build-production-workflows:
     jobs:
-     - app-deploy:
-         context: AWS
+      - app-deploy:
+          context: AWS
         filters:
           branches:
             only:
