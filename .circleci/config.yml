@@ -20,11 +20,6 @@ jobs:
           #Get all pre-requisites
           name: install package
           command: | 
-            apk add --no-cache \
-            py-pip=9.0.0-r1 
-            pip install --upgrade pip \
-            awscli==1.14.37
-            apk update && apk upgrade && apk add --update alpine-sdk && \
             apk add --no-cache bash git openssh make cmake     
             make package
   deploy-production:
