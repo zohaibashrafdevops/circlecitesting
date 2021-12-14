@@ -1,4 +1,4 @@
-SHELL = /bin/bash -eo pipefail
+SHELL = /bin/sh -eo pipefail
 
 package:
 	echo "run all packages"
