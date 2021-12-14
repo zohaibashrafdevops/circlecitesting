@@ -40,8 +40,8 @@ workflows:
     jobs:
       - app-deploy:
           context: AWS
-        filters:
-          branches:
-            only:
-              - master
+          filters:
+            branches:
+              only:
+               - master
 
